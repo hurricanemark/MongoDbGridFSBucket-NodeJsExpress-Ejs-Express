@@ -27,7 +27,7 @@ Once the storage engine using GridFS is initialized, you have to just call it us
 ```javascript
 
 npm init -y
-npm install body-parser ejs express gridfs-bucket gridfs-stream method-override mongoose multer multer-gridfs-storage
+npm install body-parser ejs express gridfs-bucket gridfs-stream method-override mongoose multer multer-gridfs-storage dotenv
 npm install --save-dev nodemon
 
 

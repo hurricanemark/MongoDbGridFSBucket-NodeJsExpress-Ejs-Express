@@ -1,3 +1,5 @@
+const dotenv = require('dotenv');
+
 const path = require('path');
 const crypto = require('crypto');
 const mongoose = require('mongoose');
@@ -18,7 +20,14 @@ router.use(bodyParser.json());
 router.use(methodOverride('_method'));
 
 // Mongo URI
-const mongoURI = 'mongodb+srv://hurricanemark:markn123%24@cluster0.brf1j.mongodb.net/oautho?authSource=admin&replicaSet=Cluster0-shard-0&readPreference=primary&ssl=true';
+// @database name: files-upload
+// @collection name: media
+let mongoURI;
+if (process.env.NODE_ENV === 'production') {
+    mongoURI = process.env.ATLAS_MONGO_URI;
+} else {
+    mongoURI = "mongodb://localhost:27017/files-upload";
+}
 
 // Create mongo connection
 const conn = mongoose.createConnection(mongoURI);
