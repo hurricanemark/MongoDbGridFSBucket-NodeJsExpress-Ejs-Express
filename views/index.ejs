@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS Only via CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+
+    <title>Mongo File Uploads</title>
+</head>
+<body>
+    <div calss="container">
+        <div class="row">
+            <div class="col-md-6 m-auto">
+                <h1 class="text-center display-4 my-4">Mongo File Uploads</h1>
+                <form action="/upload" method="POST" enctype="multipart/form-data">
+                    <div class="custom-file mb-3">
+                        <input type="file" name="myfile" id="file" class="custom-file-input">
+                        <label for="file" class="custom-file-label"></label>
+                    </div>
+                    <input type="submit" value="Submit" class="btn btn-primary btn-block">
+                </form>
+                <hr>
+
+                <% if (allfiles) { %>
+                    <% allfiles.forEach(function(file) { %>
+                        <div class="card card-body mb-2">
+                            <% if(file.isVideo === true) { %>
+                                <%= file.filename %> -- <%= file.contentType %>
+                                <video width="150" height="170" controls label="Perpetually yours">
+                                    <source src="upload/media/<%= file.filename %>" type="<%= file.contentType %> >">
+                                    Your browser does not support HTML 5.
+                                </video>
+                            <% } else if(file.isImage === true) { %>
+                                <%= file.filename %> -- <%= file.contentType %>
+                                <img src="upload/media/<%= file.filename %>" alt="image"  width="150" height="170">
+                            <% } else { %>    
+                                <%= file.filename %>
+                            <% } %>    
+
+                            <form method="POST" action="upload/files/<%= file._id %>?_method=DELETE">
+                                <button class="btn btn-danger btn-block mt-4">Delete</button>
+                            </form>
+                        </div>
+                    <% }) %>
+                
+                <% } else { %>
+                    <p>No files to show.</p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Bootstrap via CDN JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+</html>
