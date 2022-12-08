@@ -2,9 +2,8 @@ const express = require('express');
 const app = express();
 const gridfsRouter = require('./routes/gridfs-routes.js');
 
+// UI contents in ./views
 app.set('view engine', 'ejs');
-
-
 
 // Allow access to 'public' folder where resources are available to this app
 app.use(express.static('public'));

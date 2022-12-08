@@ -1,0 +1,20 @@
+span.icon a:link,
+span.icon a:visited {
+    display: block;
+    text-indent: -9999px;
+}
+
+span.home a:link,
+span.home a:visited {
+    width: 134px;
+    height: 124px;
+    background: url(./sprite.png) top left no-repeat;
+}
+
+span.home a:hover {
+    background-position: 0 -124px;
+}
+
+span.home a:active {
+    background-position: 0 -248px;
+}
