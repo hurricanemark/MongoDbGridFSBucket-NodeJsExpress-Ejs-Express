@@ -22,6 +22,8 @@ Once the storage engine using GridFS is initialized, you have to just call it us
 
 ## Let's go
 
+It's a well commented code, you'll learn more by going over it.  Cheers!
+
 <strong>Set up NodeJS project</strong>
 
 ```javascript
