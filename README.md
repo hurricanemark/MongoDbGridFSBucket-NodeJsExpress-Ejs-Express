@@ -24,6 +24,8 @@ Once the storage engine using GridFS is initialized, you have to just call it us
 
 It's a well commented code, you'll learn more by going over it.  Cheers!
 
+It is assumed that you are somewath familiar with node.js dotenv.  You are to replace `MONGO_URI` with your own database connection info.
+
 <strong>Set up NodeJS project</strong>
 
 ```javascript
